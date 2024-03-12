@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        .book {
+            position: relative;
+            width:400px;
+            height: 600px;
+            perspective: 1000px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* Adding shadow */
+    border: none;
+        }
+
+        .page {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: #fff;
+            border-left: 15px solid black;
+            transform-origin: left;
+            transition: transform 1s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .page:nth-child(1) {
+            z-index: 2;
+        }
+
+        .flip .page:nth-child(1) {
+            transform: rotateY(-180deg);
+        }
+
+        #register-button,
+        #back-button {
+            display: block;
+            margin-top: 10px;
+        }
+
+        #back-button {
+            display: none;
+        }
+
+        #message {
+            display: none;
+            text-align: center;
+        }
+
+        form {
+            height: 35vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        #first{
+            background-image: url("book.jpg");
+            background-size: cover;
+    background-position: center;
+  
+        }
+
+        
+
+        /* Media Queries for Responsive Design */
+        @media screen
+    and (max-device-width: 640px) {
+    .book {
+        width: 55%;
+        height: 900px;
+        
+    }
+}
+
+    </style>
+</head>
+<body>
+    <div class="book">
+        <div class="page" id = "first">
+            <h3 style = "background-color: white;"> M3ghna's Cook Book </h3>
+            <h4 style = "background-color: white;"> A chance to get pre sales edition</h4>
+            <button id="register-button" onclick="flipPage()">Register Now</button>
+            <div id="message">Registered successfully!</div>
+        </div>
+        <div class="page">
+            
+            <div class="form-container">
+                <form>
+                    
+                    <input type="text" id="name" name="name" placeholder="Enter Your Full Name" required >                    
+                    <input type="email" id="email" name="email" placeholder="Enter Your Email" required>
+                    <input type="tel" id="phone" name="phone" placeholder="Enter Your Contact Number" required>
+                    <input type="number" id="age" name="age" placeholder="Enter Your Age" required>
+                    <button type="submit">Submit</button>
+                    
+                </form>
+                
+            </div>
+            <button id="back-button" onclick="flipPage()">Back</button>
+        </div>
+    </div>
+
+    <script>
+        function flipPage() {
+            var book = document.querySelector('.book');
+            var registerButton = document.querySelector('#register-button');
+            var backButton = document.querySelector('#back-button');
+            var message = document.querySelector('#message');
+            var form = document.querySelector('form');
+    
+            if (book.classList.contains('flip')) {
+                book.classList.remove('flip');
+                registerButton.style.display = 'block';
+                backButton.style.display = 'none';
+                message.style.display = 'none'; // Hide the message when flipping back
+            } else {
+                book.classList.add('flip');
+                registerButton.style.display = 'none';
+                backButton.style.display = 'block';
+            }
+        }
+    
+        document.querySelector('form').addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevent the default form submission behavior
+    
+            // Form validation logic
+            var name = document.getElementById('name').value;
+            var email = document.getElementById('email').value;
+            var phone = document.getElementById('phone').value;
+            var age = document.getElementById('age').value;
+    
+            // Validate phone number using a regular expression
+            var phoneRegex = /^\d{10}$/;
+    
+            if (name.trim() === '' || email.trim() === '' || !phoneRegex.test(phone) || age.trim() === '') {
+                alert('Please fill out all fields correctly.');
+                return;
+            }
+    
+            // You can add additional validation logic here if needed
+    
+            var message = document.querySelector('#message');
+            setTimeout(function () {
+                message.style.display = 'block'; // Show the message after a delay
+            }, 500); // Adjust the delay time as needed
+            flipPage(); // Flip the div after submitting the form
+            document.querySelector('#register-button').style.display = 'none'; // Hide the "Register Now" button
+        });
+    </script>
+    
+    
+    
+</body>
+</html>
