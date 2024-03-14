@@ -27,7 +27,7 @@
             width: 100%;
             height: 100%;
             background-color: #fff;
-            border-left: 15px solid black;
+            border-left: 30px solid black;
             transform-origin: left;
             transition: transform 1s;
             display: flex;
@@ -60,12 +60,22 @@
         }
 
         form {
-            height: 35vh;
+            height: 25vh;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: space-around;
+            justify-content: space-evenly;
         }
+
+        input{
+            -webkit-transition: 0.5s;
+  transition: 0.2s;
+  outline: none;
+        }
+
+        input:focus {
+  border: 1px solid #04AA6D;
+}
 
         #first{
             background-image: url("book.jpg");
@@ -74,15 +84,77 @@
   
         }
 
+        #register-button{
+            background-color: #04AA6D;
+            border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+ 
+        }
+
+        #back-button{
+            background-color: grey;
+            border: none;
+  color: white;
+  padding: 5px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 30px;
+        }
+
+        form button {
+            background-color: #04AA6D;
+            border: none;
+  color: white;
+  padding: 5px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+        }
+
+        button {
+            font-size: 1rem;
+        }
+
+        #message {
+            font-size: 1.5rem;
+            color:#04AA6D;
+            font-weight: bolder;
+        }
+
         
 
         /* Media Queries for Responsive Design */
         @media screen
     and (max-device-width: 640px) {
     .book {
-        width: 55%;
-        height: 900px;
+        width: 70%;
+        height: 60vh;
         
+    }
+
+    h1 {
+        font-size: 3rem
+    }
+
+    h2 {
+        font-size: 2rem
+    }
+
+    button {
+        font-size: 2.2rem
+    }
+
+    input {
+        font-size: 2rem;
+    }
+
+    .page {
+        border-left: 50px solid black;
     }
 }
 
@@ -91,10 +163,13 @@
 <body>
     <div class="book">
         <div class="page" id = "first">
-            <h3 style = "background-color: white;"> M3ghna's Cook Book </h3>
-            <h4 style = "background-color: white;"> A chance to get pre sales edition</h4>
-            <button id="register-button" onclick="flipPage()">Register Now</button>
             <div id="message">Registered successfully!</div>
+            <div class = "intro">
+            <h1 style = "background-color: white;"> M3ghna's Cook Book </h1>
+            <h2 style = "background-color: white;"> A chance to get pre sales edition</h2>
+            </div>
+            <button id="register-button" onclick="flipPage()">Register Now</button>
+            
         </div>
         <div class="page">
             
@@ -158,7 +233,8 @@
                 message.style.display = 'block'; // Show the message after a delay
             }, 500); // Adjust the delay time as needed
             flipPage(); // Flip the div after submitting the form
-            document.querySelector('#register-button').style.display = 'none'; // Hide the "Register Now" button
+            document.querySelector('#register-button').style.display = 'none';
+ // Hide the "Register Now" button
         });
     </script>
     
