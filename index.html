@@ -6,17 +6,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100..900;1,100..900&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
     <style>
 
+      
 
         .container {
+            height: 85vh;
             display: flex;
             justify-content: center;
-            align-items: center;
-           
-            margin-top: 0;
-            
+            align-items: center;          
+            margin-top: 0;      
         }
 
-        .book {
+        .book {       
             position: relative;
             width:400px;
             height: 550px;
@@ -30,7 +30,7 @@
             width: 100%;
             height: 100%;
             background-color: #fff;
-            border-left: 30px solid gray;
+            border-left: 50px solid gray;
             transform-origin: left;
             transition: transform 1s;
             display: flex;
@@ -94,24 +94,18 @@
             background-color: #04AA6D;
             border: none;
   color: white;
-  padding: 15px 32px;
+  padding: 10px 20px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   margin-top: 50px;
+  font-size: 1.2rem;
  
         }
 
-        #back-button{
-            background-color: grey;
-            border: none;
-  color: white;
-  padding: 5px 25px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  margin-top: 30px;
-        }
+      #back-button{
+        border: none;
+      }
 
         form button {
             background-color: #04AA6D;
@@ -162,7 +156,10 @@
         h2 {
             font-family: "Quicksand", sans-serif; 
             font-optical-sizing: auto; 
-            text-align: center
+            text-align: center;
+            padding: 10px;
+            text-decoration: underline;
+            font-weight: bold;
         }
         
 
@@ -171,8 +168,12 @@
     and (max-device-width: 640px) {
     .book {
         width: 70%;
-        height: 60vh;
-        
+        height: 60vh;   
+    }
+
+    .container {
+        padding-top: 50px;
+        height: 70vh;
     }
 
     h1 {
@@ -184,10 +185,15 @@
     }
 
     h2{
+        padding-top: 30px;
         font-size: 2.9rem;
     }
 
     button {
+        font-size: 2rem
+    }
+
+    #register-button {
         font-size: 2.2rem
     }
 
@@ -196,10 +202,32 @@
     }
 
     .page {
-        border-left: 60px solid grey;
+        border-left: 80px solid grey;
     }
+
 }
 
+@media screen and (min-device-width: 768px) 
+    and (max-device-width: 900px){
+        .container {
+            height: 70vh;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .book {
+            height: 800px;
+            width: 500px;
+        }
+
+        h2 {
+            padding-top: 10px;
+        }
+
+        .page {
+        border-left: 70px solid grey;
+    }
+    }}
     </style>
 </head>
 <body>
@@ -210,7 +238,7 @@
         <div class="page" id = "first">
             <div id="message"><h4>Registered successfully!</h4></div>
             <div class = "intro">
-            <h1 style = "background-color: white;"> M3ghna's Cook Book </h1>
+            <h1> M3ghna's Cook Book </h1>
             <p style = "background-color: white;"> A chance to get pre sales edition</p>
             </div>
             <button id="register-button" onclick="flipPage()">Register Now</button>
@@ -230,7 +258,7 @@
                 </form>
                 
             </div>
-            <button id="back-button" onclick="flipPage()">Back</button>
+            <button id="back-button" onclick="flipPage()"><u>Back</u></button>
         </div>
     </div>
 </div>
